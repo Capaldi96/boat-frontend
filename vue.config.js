@@ -4,7 +4,7 @@ module.exports = {
     devServer:{
         proxy:{
             '^/api':{
-                target:'mongodb+srv://<username>:<password>@boats.puv9y.mongodb.net/<dbname>?retryWrites=true&w=majority'
+                target:'mongodb+srv://dbUser:dbUserPassword@boats.puv9y.mongodb.net/<dbname>?retryWrites=true&w=majority'
             }
         }
     }
