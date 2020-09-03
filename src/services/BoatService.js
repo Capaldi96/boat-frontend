@@ -1,20 +1,19 @@
 import axios from "axios";
-const url = 'http://localhost:5000';
 export default {
   async getBoats() {  
-    let res = await axios.get(url + "/api/boats");
+    let res = await axios.get("/api/boats");
     return res.data;
   },
   async getDetailedBoat(id) {
-    let res = await axios.get(url + "/api/boats/" + id);
+    let res = await axios.get("/api/boats/" + id);
     return res.data;
   },
   async search(data){
-    let res = await axios.get(url + "/api/search?" + data);
+    let res = await axios.get("/api/search?" + data);
     return res.data;
   },
   addBoat(data){
-    axios.post(url + '/api/boats/add',{
+    axios.post('/api/boats/add',{
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -27,10 +26,10 @@ export default {
     })
   },
   deleteBoat(id){
-    axios.delete(url + '/api/boats/delete/' + id)
+    axios.delete('/api/boats/delete/' + id)
   },
   editBoat(data){
-    axios.put(url + '/api/boats/edit/' + data._id, {
+    axios.put('/api/boats/edit/' + data._id, {
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -40,7 +39,7 @@ export default {
     })
   },
   async resetDatabase(){
-    let res = await axios.get(url + "/api/resetmongodb");
+    let res = await axios.get("/api/resetmongodb");
     return res.data;
   }
   
