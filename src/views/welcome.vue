@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Welcome captain</h1>
         <h4>Check out our boat collection above!</h4>
-        <button class="myButton" @click="resetDatabase">Start/restart database</button>
+        <button class="myButton" @click="resetDatabase">Restart database</button>
     </div>
 </template>
 

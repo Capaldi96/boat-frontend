@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-
+// servrar frontend i vanilla jss
 // app.get('/', (req, res) => {
 //     res.sendFile(__dirname + '/index.html');
 // });
