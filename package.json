@@ -20,6 +20,7 @@
     "mongodb": "^3.6.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "cors": "^2.8.5",
     "vue-router": "^3.2.0",
     "vue-visible": "^1.0.2",
     "vuelidate": "^0.7.5"
