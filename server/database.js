@@ -1,6 +1,6 @@
 
 const { MongoClient, ObjectID } = require('mongodb');
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://dbUser:dbUserPassword@boats.puv9y.mongodb.net/<dbname>?retryWrites=true&w=majority'
 const dbName = 'boats';
 const collectionName = 'boats'
 
