@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { getAllBoats, addBoat, getOneBoat, deleteBoat, editBoat, search, resetDataBase} = require ('./database.js');
 
+
+const port = process.env.PORT || 5000;
+
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
@@ -72,7 +75,6 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 
-const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log("Server is listening on port" + port);
 });
