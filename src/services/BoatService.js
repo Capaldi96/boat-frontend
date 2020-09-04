@@ -7,19 +7,19 @@ if(process.env.NODE_ENV === 'production'){
 }
 export default {
   async getBoats() {  
-    let res = await axios.get(url + "/boats");
+    let res = await axios.get(baseUrl + "/boats");
     return res.data;
   },
   async getDetailedBoat(id) {
-    let res = await axios.get(url + "/boats/" + id);
+    let res = await axios.get(baseUrl + "/boats/" + id);
     return res.data;
   },
   async search(data){
-    let res = await axios.get(url + "/search?" + data);
+    let res = await axios.get(baseUrl + "/search?" + data);
     return res.data;
   },
   addBoat(data){
-    axios.post(url + '/boats/add',{
+    axios.post(baseUrl + '/boats/add',{
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -32,10 +32,10 @@ export default {
     })
   },
   deleteBoat(id){
-    axios.delete(url + '/boats/delete/' + id)
+    axios.delete(baseUrl + '/boats/delete/' + id)
   },
   editBoat(data){
-    axios.put(url + '/boats/edit/' + data._id, {
+    axios.put(baseUrl + '/boats/edit/' + data._id, {
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -45,7 +45,7 @@ export default {
     })
   },
   async resetDatabase(){
-    let res = await axios.get(url + "/resetmongodb");
+    let res = await axios.get(baseUrl + "/resetmongodb");
     return res.data;
   }
   
