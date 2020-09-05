@@ -1,19 +1,28 @@
 import axios from "axios";
+let baseUrl;
+if( process.env.NODE_ENV === 'production' ) {
+	// AJAX stannar kvar på samma server när vi kör production, använd relativ URL
+	baseUrl = '/api';
+}
+else {  // NODE_ENV === 'development'
+	// Använd absolut URL med portnumret från din serverfil, steg 3a
+	baseUrl = 'http://localhost:5000/api';
+}
 export default {
   async getBoats() {  
-    let res = await axios.get("/api/boats");
+    let res = await axios.get(baseUrl + "/boats");
     return res.data;
   },
   async getDetailedBoat(id) {
-    let res = await axios.get("/api/boats/" + id);
+    let res = await axios.get(baseUrl + "/boats/" + id);
     return res.data;
   },
   async search(data){
-    let res = await axios.get("/api/search?" + data);
+    let res = await axios.get(baseUrl + "/search?" + data);
     return res.data;
   },
   addBoat(data){
-    axios.post('/api/boats/add',{
+    axios.post(baseUrl + '/boats/add',{
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -26,10 +35,10 @@ export default {
     })
   },
   deleteBoat(id){
-    axios.delete('/api/boats/delete/' + id)
+    axios.delete(baseUrl + '/boats/delete/' + id)
   },
   editBoat(data){
-    axios.put('/api/boats/edit/' + data._id, {
+    axios.put(baseUrl + '/boats/edit/' + data._id, {
       modelName: data.modelName,
       manufacturingYear: data.manufacturingYear,
       price: data.price,
@@ -39,7 +48,7 @@ export default {
     })
   },
   async resetDatabase(){
-    let res = await axios.get("/api/resetmongodb");
+    let res = await axios.get(baseUrl + "/resetmongodb");
     return res.data;
   }
   
