@@ -28,6 +28,7 @@
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {
+    "@vue/cli": "^4.5.4",
     "@vue/cli-service": "^4.5.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
