@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const path = require('path')
 const cors = require('cors');
 const { getAllBoats, addBoat, getOneBoat, deleteBoat, editBoat, search, resetDataBase } = require('./database.js');
 
@@ -60,9 +61,9 @@ app.put('/api/boats/edit/:id', (req, res) => {
 });
 
 //Static folder
-app.use(express.static(__dirname + '../dist/'));
+app.use(express.static(path.join(__dirname, '../dist/')));
 //handle SPA
-app.get(/.*/, (req, res) => res.sendFile(__dirname + '../dist/index.html'));
+app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 
 
 app.listen(port, () => {
