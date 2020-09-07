@@ -69,9 +69,9 @@ app.put('/api/boats/edit/:id', (req, res) => {
 //Handle production
 if(process.env.NODE_ENV === 'production'){
     //Static folder
-    app.use(express.static(__dirname + '/dist/'));
+    app.use(express.static(__dirname + '../dist/'));
     //handle SPA
-    app.get(/.*/, (req,res) => res.sendFile(__dirname + '/dist/index.html'));
+    app.get(/.*/, (req,res) => res.sendFile(__dirname + '../dist/index.html'));
 }
 
 
