@@ -1,2 +1,4 @@
-release: npm run build
-web: node server/server.js
+npm install
+npm run build
+node server/server.js
+
