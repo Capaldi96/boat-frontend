@@ -6,12 +6,11 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start-server": "node server/index.js",
-    "dev-server": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "heroku-prebuild": "npm install @vue/cli"
   },
   "dependencies": {
     "@vue/cli": "^4.5.4",
