@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { getAllBoats, addBoat, getOneBoat, deleteBoat, editBoat, search, resetDataBase} = require ('./database.js');
+const { getAllBoats, addBoat, getOneBoat, deleteBoat, editBoat, search, resetDataBase } = require('./database.js');
 
 
 const port = process.env.PORT || 5000;
@@ -16,57 +16,53 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/api/boats/', (req, res) => {
-    console.log(__dirname);
-    getAllBoats(dataOrError =>{
+    getAllBoats(dataOrError => {
         res.send(dataOrError);
     })
-    
+
 });
 
 app.get('/api/boats/:id', (req, res) => {
-    getOneBoat(req.params.id, dataOrError =>{
+    getOneBoat(req.params.id, dataOrError => {
         res.send(dataOrError);
     });
 });
 
-app.get('/api/search', (req,res) =>{
-    search(req.query, dataOrError =>{
+app.get('/api/search', (req, res) => {
+    search(req.query, dataOrError => {
         res.send(dataOrError);
     })
 })
 
-app.get('/api/resetmongodb', (req,res) =>{
-    resetDataBase(dataOrError =>{
+app.get('/api/resetmongodb', (req, res) => {
+    resetDataBase(dataOrError => {
         res.send(dataOrError);
     })
 })
 
 //querystring
 app.delete('/api/boats/delete/:id', (req, res) => {
-    deleteBoat(req.params.id, dataOrError =>{
+    deleteBoat(req.params.id, dataOrError => {
         res.send(dataOrError)
     });
 });
-app.post('/api/boats/add', (req,res) =>{
-    addBoat(req.body, () =>{
-        if(res.statusCode == 200){
+app.post('/api/boats/add', (req, res) => {
+    addBoat(req.body, () => {
+        if (res.statusCode == 200) {
             res.send("Success")
         }
     })
 })
 app.put('/api/boats/edit/:id', (req, res) => {
-    editBoat(req.body,req.params.id,()=> {
+    editBoat(req.body, req.params.id, () => {
         res.send(req.body)
     })
 });
 
-//Handle production
-if(process.env.NODE_ENV === 'production'){
-    //Static folder
-    app.use(express.static(__dirname + '../dist/'));
-    //handle SPA
-    app.get(/.*/, (req,res) => res.sendFile(__dirname + '../dist/index.html'));
-}
+//Static folder
+app.use(express.static(__dirname + '../dist/'));
+//handle SPA
+app.get(/.*/, (req, res) => res.sendFile(__dirname + '../dist/index.html'));
 
 
 app.listen(port, () => {
