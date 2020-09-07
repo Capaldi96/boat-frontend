@@ -15,14 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// servrar frontend i vanilla jss
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/public/index.html');
-// });
-// app.get('/index.html', (req, res) => {
-//     res.sendFile(__dirname + '/public/index.html');
-// });
 app.get('/api/boats/', (req, res) => {
+    console.log(__dirname);
     getAllBoats(dataOrError =>{
         res.send(dataOrError);
     })
